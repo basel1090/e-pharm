@@ -60,9 +60,15 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        if($product==null){
+            session()->flash("msg", "The Product was not found");
+            return redirect(route("product.index"));
+        }
+        return view("admin.product.edit")->withProduct($product);
+
     }
 
     /**
@@ -74,7 +80,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        if(!$request->published){
+            $request['published']=0;
+        }
+        Category::find($id)->update($request->all());
+        session()->flash("msg", "The category was updated");
+        return redirect(route("categories.index"));
     }
 
     /**

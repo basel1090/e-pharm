@@ -36,9 +36,9 @@
                     <td>{{ $product->title }}</td>
                     <td>
                         @if($product->published)
-                            <a href="{{route('category.pending',$product->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
+                            <a href="{{--route('category.pending',$product->id--)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
                         @else
-                            <a href="{{route('category.confirm',$product->id)}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
+                            <a href="{{--route('category.confirm',$product->id)--}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
 
                         @endif
                     </td>

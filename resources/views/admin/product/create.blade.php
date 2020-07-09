@@ -43,7 +43,7 @@
                     <div class='col-sm-6'>
                         <label for="imageFile">Image</label>
                         <div class="custom-file">
-                            <input type="file" name="imageFile" class="custom-file-input" id="imageFile">
+                            <input type="file" name="image" class="custom-file-input" id="imageFile">
                         </div>
                     </div>
                 </div>
@@ -59,8 +59,8 @@
                     <input   type="number" class="form-control" id="new_price" name="new_price">
                 </div>
                 <div class="form-group ">
-                    <label for="new_price">Size</label>
-                    <input   type="number" class="form-control" id="new_price" name="new_price">
+                    <label for="size">Size</label>
+                    <input   type="number" class="form-control" id="size" name="size">
                 </div>
 
 

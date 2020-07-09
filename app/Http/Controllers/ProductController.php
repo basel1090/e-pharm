@@ -19,6 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        dd(\request()->all());
         $products = Product::get();
         return  view('admin.product.index')->with('products' , $products);
     }
@@ -43,7 +44,9 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        dd($request->all());
+        Product::create($request->all());
+        session()->flash('msg' , "s: product create successfully");
+        return redirect(route('products.index'));
     }
 
     /**

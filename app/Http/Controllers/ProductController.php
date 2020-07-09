@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Brand;
+
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use  App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -15,7 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return  view('admin.product.index');
+        $products = Product::get();
+        return  view('admin.product.index')->with('products' , $products);
     }
 
     /**
@@ -25,7 +30,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get();
+        $brands = Brand::get();
+        return view('admin.product.create')->with('categories' , $categories)->with('brands' , $brands);
     }
 
     /**
@@ -34,7 +41,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( $request)
     {
         //
     }
@@ -58,9 +65,15 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        if($product==null){
+            session()->flash("msg", "The Product was not found");
+            return redirect(route("product.index"));
+        }
+        return view("admin.product.edit")->withProduct($product);
+
     }
 
     /**
@@ -70,9 +83,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        if(!$request->published){
+            $request['published']=0;
+        }
+        Category::find($id)->update($request->all());
+        session()->flash("msg", "The category was updated");
+        return redirect(route("categories.index"));
     }
 
     /**
@@ -84,6 +102,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::find($id)->destroy();
-        return redirect(route('index'));
+        session()->flash("msg", "w:The Product Deleted");
+        return redirect(route('products.index'));
     }
 }

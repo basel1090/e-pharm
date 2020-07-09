@@ -23,6 +23,7 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+//        dd($this->all());
         $id = $this->route('product');
 
 		return [
@@ -34,17 +35,6 @@ class ProductRequest extends FormRequest
             'description' => 'min:10',
             'category_id' => 'required',
             'brand_id' => 'required',
-            'active' => 'required',
-
-
-
-
-
-
-
-
-
-
 
 		];
     }

@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        dd(\request()->all());
+//        dd(\request()->all());
         $products = Product::get();
         return  view('admin.product.index')->with('products' , $products);
     }
@@ -44,6 +44,8 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        $request['active'] = $request['active']? 1 : 0 ;
+        $request->file('image')->store('image');
         Product::create($request->all());
         session()->flash('msg' , "s: product create successfully");
         return redirect(route('products.index'));
@@ -102,9 +104,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product)
     {
-        Product::find($id)->destroy();
+        Product::destroy($product);
         session()->flash("msg", "w:The Product Deleted");
         return redirect(route('products.index'));
     }

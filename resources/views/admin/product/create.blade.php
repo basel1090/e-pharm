@@ -28,8 +28,8 @@
                     </select>
                 </div>
                 <div class="form-group has-success">
-                    <label for="form_control_1">Brand</label>
-                    <select name="category_id" class="form-control">
+                    <label for="brand_id">Brand</label>
+                    <select name="brand_id" class="form-control">
                         <option value="">Select Category</option>
                         @foreach($brands as $brand)
                             <option
@@ -51,22 +51,24 @@
                 <div class="form-body ">
                     <div class="form-group has-success">
                         <label for="old_price">old price</label>
-                        <input type="number" class="form-control" id="old_price" name="old_price">
+                        <input type="number" class="form-control" value="{{old('title')}}" id="old_price" name="old_price">
                     </div>
                 </div>
                 <div class="form-group ">
                     <label for="new_price">new price</label>
-                    <input   type="number" class="form-control" id="new_price" name="new_price">
+                    <input   type="number" class="form-control" value="{{old('title')}}" id="new_price" name="new_price">
                 </div>
                 <div class="form-group ">
                     <label for="size">Size</label>
-                    <input   type="number" class="form-control" id="size" name="size">
+                    <input   type="number" class="form-control" value="{{old('title')}}" id="size" name="size">
                 </div>
 
-
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea  class="form-control"  id="description" value="{{old('title')}}" name="description" ></textarea>
+                </div>
                 <div class="form-check">
-                    <input {{ old('active')?"checked":"" }} value='1' type="checkbox" name='active'
-                           class="form-check-input" id="published">
+                    <input type="checkbox" name='active' value="{{old('title')?? ""}}" class="form-check-input" id="published">
                     <label class="form-check-label" for='published'>Active</label>
                 </div>
                 <div class="card-footer mt-3">

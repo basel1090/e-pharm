@@ -23,8 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix("admin")->middleware(["auth"/*,'permissions'*/])->group(function(){
 
-    Route::resource("categories",'CategoryController');
-    Route::resource("brands",'BrandController');
+    Route::resource("categories",'Admin\CategoryController');
+    Route::resource("brands",'Admin\BrandController');
     Route::resource("products",'ProductController');
     Route::resource("orders",'OrderController');
     Route::get("/users/{id}/permissions","UserController@permissions")->name('permissions');

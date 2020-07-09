@@ -39,9 +39,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( $request)
+    public function store(ProductRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

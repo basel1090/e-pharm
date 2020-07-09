@@ -1,5 +1,5 @@
 @extends("layouts.admin")
-@section("title", "Manage Category")
+@section("title", "Manage Products")
 @section("content")
 
     <form class='row'>
@@ -14,16 +14,13 @@
             </select></div>
         <div class='col-sm-2'>
             <button type='submit' class='btn btn-primary'><i class="fa fa-search"></i>search</button>
-
-            <button name="export" value='Export' type='submit' class='btn btn-success'><i class="fa fa-excel"></i>Export</button>
-
         </div>
         <div class="col-2">
 
-            <a href="{{ route('categories.create') }}" class="btn btn-success">Create New Category</a>
+            <a href="{{ route('products.create') }}" class="btn btn-success">Create New Product</a>
         </div>
     </form>
-    @if($categories->count()>0)
+    @if($products->count()>0)
         <table align="center" class="table mt-3 table-striped table-bordered">
             <thead>
             <tr>
@@ -34,14 +31,14 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($categories as $category)
+            @foreach($products as $product)
                 <tr>
-                    <td>{{ $category->title }}</td>
+                    <td>{{ $product->title }}</td>
                     <td>
-                        @if($category->published)
-                            <a href="{{route('category.pending',$category->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
+                        @if($product->published)
+                            <a href="{{route('category.pending',$product->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
                         @else
-                            <a href="{{route('category.confirm',$category->id)}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
+                            <a href="{{route('category.confirm',$product->id)}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
 
                         @endif
                     </td>
@@ -49,9 +46,9 @@
 
 
                     <td width="20%">
-                        <form method="post" action="{{ route('categories.destroy', $category->id) }}">
+                        <form method="post" action="{{ route('products.destroy', $product->id) }}">
 
-                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm"><i
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm"><i
                                     class='fa fa-edit'></i></a>
                             <button onclick='return confirm("Are you sure??")' type="submit"
                                     class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>

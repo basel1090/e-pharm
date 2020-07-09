@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Brand;
+
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -50,9 +52,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $categories = Category::get();
+        $products = Product::find($id);
+        return view('admin.product.show')->with("products",$products)->with("categories",$categories);
     }
 
     /**
@@ -95,8 +99,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        Product::find($id)->destroy();
+        session()->flash("msg", "w:The Product Deleted");
+        return redirect(route('products.index'));
     }
 }

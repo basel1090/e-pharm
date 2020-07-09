@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix("admin")->namespace("Admin")->middleware(["auth"/*,'permissions'*/])->group(function(){
-   
+Route::prefix("admin")->middleware(["auth"/*,'permissions'*/])->group(function(){
+
     Route::resource("categories",'CategoryController');
     Route::resource("brands",'BrandController');
     Route::resource("products",'ProductController');

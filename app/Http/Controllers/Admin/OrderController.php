@@ -20,37 +20,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders=Order::orderBy('id','desc');
-
-       $products=request()->get("products");
-       $status=request()->get("status");
-       $users=request()->get("users");
-
-      
-        if($status!=null){
-            $orders->where('order_status_id',$status);
-        }
-        if($products){
-            $orders->where('product_id',$products);
-        }
-        if($users){
-            $orders->where('user_id',$users);
-        }
-
-        $statuses=OrderStatus::orderBy('title')->get();
-        $products=Product::orderBy('title')->get();
-        $users=User::orderBy('name')->get();
 
 
-        $orders = $orders->paginate(5)->appends([
-
-            "status"=>$status,
-            "products"=>$products,
-            "users"=>$users
-
-            ]);
-
-        return view('admin.order.index', compact(['orders','statuses','products','users']));
     }
 
     /**
@@ -118,17 +89,6 @@ class OrderController extends Controller
     {
         //
     }
-    public function approve($id){
-        $order_approve=Order::find($id);
-        $order_approve->update(['order_status_id'=>2]);
-        session()->flash('msg','s: order has been approved');
-        return redirect()->back();
 
-    }
-    public function cancel($id){
-        $order_cancel=Order::find($id);
-        $order_cancel->update(['order_status_id'=>3]);
-        session()->flash('msg','w: order has been canceled');
-        return redirect()->back();
-    }
+
 }

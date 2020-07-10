@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Models\Product;
 use App\User;
-use App\Models\OrderStatus;
 use Illuminate\Http\Request;
-use Illuminate\Http\Request\Order\OrderRequest;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 
 class OrderController extends Controller
@@ -20,44 +19,40 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $user_id = \request()->get('user_id') ;
+        $price = \request()->get('price') ;
+        $product_id = \request()->get('product_id') ;
+        $order_status_id = \request()->get('order_status_id');
 
-        $user_id=request()->get("user_id");
-        $price=request()->get("price");
-        $product_id=request()->get("product_id");
-        $order_status_id=request()->get("order_status_id");
 
-        $orders = Order::whereRaw('true');
-        if($user_id!=""){
-            $orders->where('user_id',$user_id);
+        $orders=Order::whereRaw('true');
+        if ($user_id!="")
+        {
+            $orders->where('user_id' , $user_id);
         }
+        if ($price){
 
-        if($price) {
-            $orders->where('price','like', "%$price%");
+            $orders->where('price' , 'like' , "%{$price}%");
         }
+        if ($product_id!=""){
 
-        if($product_id != ""){
-                $orders->where('product_id',$product_id);
-            }
-
-        if($order_status_id!=""){
-            $orders->where('order_status_id',$order_status_id);
+            $orders->where('product_id' , $product_id);
         }
+        if ($order_status_id !=""){
 
-        $status = OrderStatus::all();
-        $users = User::all();
-
-        $products=Product::orderBy('title')->get();
-      $orders = $orders->paginate(5)->appends(["user_id"=>$user_id,
-           "price"=>$price,
+            $orders->where('order_status_id' , $order_status_id);
+        }
+        $status=OrderStatus::all();
+        $users=User::all();
+        $products=Product::orderby('title')->get();
+        $orders=$orders->paginate(5)->appends([
+            "user_id"=>$user_id,
+            "price"=>$price,
             "product_id"=>$product_id,
             "order_status_id"=>$order_status_id
         ]);
 
-        return view("admin.order.index")->with("orders" , $orders)
-                                                ->with("status" , $status)
-                                                ->with("users" , $users)
-                                                ->with("products" , $products);
-
+        return view('admin.orders.index',compact('orders','status','users','products'));
     }
 
     /**
@@ -65,6 +60,31 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function done($id){
+        $order_done=Order::find($id);
+        $order_done->update(['order_status_id'=>2]);
+        session()->flash('msg','s: Order has been Done');
+        return redirect()->back();
+    }
+
+    public function cancel($id){
+        $order_cancel=Order::find($id);
+        $order_cancel->update(['order_status_id'=> 3]);
+        session()->flash('msg','e: Order has been Cancel');
+        return redirect()->back();
+    }
+
+    public function pending($id){
+        $order_pending=Order::find($id);
+        $order_pending->update(['order_status_id'=>1]);
+        session()->flash('msg','s: Order has been pending');
+        return redirect()->back();
+    }
+
+
+
+
     public function create()
     {
         //
@@ -87,9 +107,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
-        //
+        $orders=Order::all();
+        $order = Order::find($id);
+//        dd($comments);
+        return view('admin.orders.show')->with('order' , $order)->with('orders',$orders);
     }
 
     /**
@@ -121,8 +144,16 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+
+        $order = Order::find($id);
+        if(!$order){
+            Session()->flash('msg','Order not found');
+            return redirect()->back();
+        }
+        Order::destroy($id);
+        session()->flash("msg", " Order Deleted Successfully");
+        return redirect()->back();
     }
 }

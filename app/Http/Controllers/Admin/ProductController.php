@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use  App\Http\Requests\ProductRequest;
+
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {

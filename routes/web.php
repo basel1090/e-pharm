@@ -40,4 +40,8 @@ Route::prefix("admin")->middleware(["auth"/*,'permissions'*/])->group(function()
 
     Route::get("no-access","HomeController@noAccess")->name("admin.no-access");
     Route::get("/","HomeController@index")->name("admin.home");
+
+
+    Route::get('/order_status/approve/{id}','OrderController@approve')->name('order.approve');
+    Route::get('/order_status/{id}','OrderController@cancel')->name('order.cancel');
 });

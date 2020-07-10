@@ -963,7 +963,6 @@
             "time": "2020-07-07T15:10:00+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "laravel/ui",
             "version": "v2.1.0",
             "source": {
@@ -1019,8 +1018,6 @@
             "time": "2020-06-30T20:56:33+00:00"
         },
         {
-=======
->>>>>>> c9ce0c831cfd6cedb9eee3946d5def0aa26f92ac
             "name": "league/commonmark",
             "version": "1.5.1",
             "source": {

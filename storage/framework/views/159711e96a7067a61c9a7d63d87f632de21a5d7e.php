@@ -2,11 +2,16 @@
 <?php $__env->startSection("content"); ?>
 
     <form class='row'>
-        <div class='col-sm-6'>
-            <input type='text' class="form-control" placeholder="enter your search"
-                   name="q"/></div>
         <div class='col-sm-2'>
-            <select name='published' class='form-control'>
+            <input type='text' class="form-control" placeholder="enter product name" name="name"/></div>
+
+        <div class='col-sm-2'>
+            <input type='text' class="form-control" placeholder="enter category" name="category"/></div>
+
+        <div class='col-sm-2'>
+            <input type='text' class="form-control" placeholder="enter brand" name="brand"/></div>
+        <div class='col-sm-2'>
+            <select name='active' class='form-control'>
                 <option value=''>Any status</option>
                 <option <?php echo e(request()->get("published")?"selected":""); ?> value='1'>Active</option>
                 <option <?php echo e(request()->get("published")=='0'?"selected":""); ?> value='0'>InActive</option>
@@ -30,8 +35,8 @@
                 <th> size</th>
                 <th>image</th>
                 <th> description</th>
-                <th>category_id</th>
-                <th>brand_id</th>
+                <th>category</th>
+                <th>brand</th>
                 <th>active</th>
                 <th width="20%"></th>
 
@@ -45,7 +50,19 @@
                     <td><?php echo e($product->old_price); ?></td>
                     <td><?php echo e($product->new_price); ?></td>
                     <td><?php echo e($product->size); ?></td>
-                    <td><?php echo e($product->image); ?></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button>
+
+                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <img src="<?php echo e(asset("storage/".$product->image)); ?>" class="img-responsive" alt="No Image Found" width="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
                     <td><?php echo e($product->description); ?></td>
                     <td><?php echo e($product->category->title); ?></td>
                     <td><?php echo e($product->brand->title); ?></td>
@@ -70,6 +87,8 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
+        <?php echo e($products->links()); ?>
+
     <?php else: ?>
         <div class='alert alert-warning'>Sorry, there is no results to your search</div>
 

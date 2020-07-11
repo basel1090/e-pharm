@@ -25,13 +25,13 @@ class ProductRequest extends FormRequest
     {
 //        dd($this->all());
         $id = $this->route('product');
-        dd();
+
 		return [
             'title' => 'required|unique:categories,title,'.$id.',id',
             'old_price' => 'required',
             'new_price' => 'required',
             'size' => 'required',
-            'image' => 'required',
+            'imageFile' => 'required',
             'description' => 'min:10',
             'category_id' => 'required',
             'brand_id' => 'required',

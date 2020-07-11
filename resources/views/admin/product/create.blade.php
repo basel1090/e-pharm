@@ -43,7 +43,7 @@
                     <div class='col-sm-6'>
                         <label for="imageFile">Image</label>
                         <div class="custom-file">
-                            <input type="file" name="image" class="custom-file-input" id="imageFile">
+                            <input type="file" name="imageFile" class="custom-file-input" id="imageFile">
                         </div>
                     </div>
                 </div>

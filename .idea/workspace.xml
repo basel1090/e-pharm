@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cdc0a46-4b12-49ac-9dcf-4a88a3338a78" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/e-pharm.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/8RaKpvlzefOyR2mKjQ139YSeuNWeOCfvfEVcr7x7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/NGCg8lA967of4p9OAuX2BuHHpTeVnpf0cTAkAjT2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/Pw0ejGRBC2dqP3culvpYHhFYbZRyztNTVClzFkNh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/159711e96a7067a61c9a7d63d87f632de21a5d7e.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/159711e96a7067a61c9a7d63d87f632de21a5d7e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/622055581011cfc2288651ce59a7f7a02de95241.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/622055581011cfc2288651ce59a7f7a02de95241.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/b231805db352f077e42828252809ae7be5d30f0e.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b231805db352f077e42828252809ae7be5d30f0e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/b63e4b1d0c418ee08a14e0670b55a53a8b06656d.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b63e4b1d0c418ee08a14e0670b55a53a8b06656d.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -162,7 +179,7 @@
       <workItem from="1594303602183" duration="10239000" />
       <workItem from="1594459869086" duration="1887000" />
       <workItem from="1594471456830" duration="329000" />
-      <workItem from="1594474047427" duration="1032000" />
+      <workItem from="1594474047427" duration="11022000" />
     </task>
     <servers />
   </component>

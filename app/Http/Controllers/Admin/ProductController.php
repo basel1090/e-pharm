@@ -18,11 +18,42 @@ class ProductController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     *
      */
+    public  $search ;
     public function index()
     {
-//        dd(\request()->all());
-        $products = Product::get();
+
+        $products = Product::orderBy('id');
+
+        $this->search = [
+            'name' =>\request()->get('name') ,
+            'category' => \request()->get('category') ,
+            'brand' => \request()->get('brand') ,
+            'active' => \request()->get('active')
+        ];
+
+//        $category_id = Category::where('title' , 'like' , "%{$search['category']}%")->first('id')->id ?? "";
+//        $brand_id = Category::where('title' , 'like' , "%{$search['brand']}%")->first('id')->id ?? "";
+
+        if ($this->search['name']){
+            $products->where('title' , 'like' , "%{$this->search['name']}%");
+        }
+        if ($this->search['category']){
+            $products->whereHas('category' ,function ($query ){
+                $query->where('title' , 'like' , "%{$this->search['category']}%");
+            });
+        }
+        if ($this->search['brand']){
+            $products->whereHas('brand' ,function ($query ){
+                $query->where('title' , 'like' , "%{$this->search['brand']}%");
+            });
+        }
+        if ($this->search['active'] != null){
+            $products->where('active' , $this->search['active']);
+        }
+        $products = $products->paginate(10)->appends($this->search);
         return view('admin.product.index')->with('products', $products);
     }
 
@@ -47,7 +78,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $request['active'] = $request['active'] ? 1 : 0;
-        $request->file('image')->store('image');
+        $imageName = basename($request->imageFile->store("public"));
+        $request['image'] = $imageName;
         Product::create($request->all());
         session()->flash('msg', "s: product create successfully");
         return redirect(route('products.index'));

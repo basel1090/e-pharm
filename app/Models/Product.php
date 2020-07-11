@@ -15,6 +15,13 @@ class Product extends Model
         'brand_id',
         'category_id',
         'size',
-        'active',
+        'active'
     ];
+
+    public function category (){
+        return $this->belongsTo('App\Models\Category' , 'category_id' , 'id');
+    }
+    public function brand (){
+        return $this->belongsTo('App\Models\Brand' , 'brand_id' , 'id');
+    }
 }

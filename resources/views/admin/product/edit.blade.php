@@ -1,32 +1,81 @@
 @extends("layouts.admin")
 
-@section("title","Edit Product")
+@section("title","Create New Product")
 
 
 @section("content")
 
+    <div class="portlet light ">
+        <div class="portlet-body form">
+            <form  method="post" enctype="multipart/form-data" action="{{ route('products.update' , $product->id) }}" role="form">
+                @method('patch')
+                @csrf
+                <div class="form-body">
+                    <div class="form-group has-success"><label for="form_control_1">Title</label>
+                        <input type="text" class="form-control" id="form_control_1" name="title"
+                               value="{{old('title')??$product->title}}" placeholder="Enter your Title">
 
-<form method="post" action="{{--route('product.update', $product->id) --}}" role="form">
-@csrf
-@method("PATCH")
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="title">Title</label>
-                    <input value='{{old('title')??$product->title}}' type="text" autofocus class="{{ $errors->has('title')?"is-invalid":""}} form-control" id="title" name="title" placeholder="Enter Category Name">
-                  </div>
-
-                  <div class="form-check">
-                    <input {{ (old('published')??$product->published)?"checked":"" }} value='1' type="checkbox" name='published' class="form-check-input" id="published">
-                    <label class="form-check-label" for='published'>Published</label>
-                  </div>
-
-
-
-                <!-- /.card-body -->
-
-                <div >
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <a class='btn btn-danger' href='{{ asset("admin/categories") }}'>Cancel</a>
+                    </div>
                 </div>
-              </form>
+                <div class="form-group has-success">
+                    <label for="form_control_1">Category</label>
+                    <select name="category_id" class="form-control">
+                        <option value="">Select Category</option>
+                        @foreach($categories as $category)
+                            <option
+                                {{old('category_id')== $category->id?"selected":""}} value='{{$category->id}}'>{{$category->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group has-success">
+                    <label for="brand_id">Brand</label>
+                    <select name="brand_id" class="form-control">
+                        <option value="">Select Category</option>
+                        @foreach($brands as $brand)
+                            <option
+                                {{old('brand_id')== $brand->id?"selected":""}} value='{{$brand->id}}'>{{$brand->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class='col-sm-6'>
+                        <label for="imageFile">Image</label>
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="imageFile">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-body ">
+                    <div class="form-group has-success">
+                        <label for="old_price">old price</label>
+                        <input type="number" class="form-control" value="{{old('old_price')??$product->old_price}}" id="old_price" name="old_price">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="new_price">new price</label>
+                    <input   type="number" class="form-control" value="{{old('new_price')??$product->new_price}}" id="new_price" name="new_price">
+                </div>
+                <div class="form-group ">
+                    <label for="size">Size</label>
+                    <input   type="number" class="form-control" value="{{old('size')??$product->size}}" id="size" name="size">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea  class="form-control"  id="description" value="{{old('description')??$product->description}}" name="description" ></textarea>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" name='active' {{ old('active')?'checked': $product->active ? 'checked' : '' }} class="form-check-input" id="active">
+                    <label class="form-check-label" for='active'>Active</label>
+                </div>
+                <div class="card-footer mt-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class='btn btn-default' href='{{ route("products.index") }}'>Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

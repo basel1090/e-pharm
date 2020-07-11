@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 
 use App\Models\Brand;
@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use  App\Http\Requests\ProductRequest;
+
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -78,12 +80,17 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::get();
+        $brands = Brand::get();
         $product = Product::find($id);
         if ($product == null) {
             session()->flash("msg", "The Product was not found");
             return redirect(route("product.index"));
         }
-        return view("admin.product.edit")->withProduct($product);
+        return view("admin.product.edit")->withProduct($product)
+            ->with('categories' , $categories)
+            ->with('brands' , $brands)
+            ;
     }
 
     /**

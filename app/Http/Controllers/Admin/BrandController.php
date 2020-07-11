@@ -7,6 +7,7 @@ use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
@@ -19,7 +20,7 @@ class BrandController extends Controller
 
         $q=request()->get("q")??"";
 
-            $brands=Brand::where('title','like',"%{$q}%")->paginate(5)->appends(["q"=>$q]);
+        $brands=Brand::where('title','like',"%{$q}%")->paginate(5)->appends(["q"=>$q]);
 
 
         return view('admin.brand.index')->with("brands",$brands);

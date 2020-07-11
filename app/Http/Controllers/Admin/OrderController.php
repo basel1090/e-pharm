@@ -1,11 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\Order;
+
+use App\Models\Product;
+use App\User;
 use App\Models\OrderStatus;
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 
-class OrderStatusController extends Controller
+use App\Http\Controllers\Controller;
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +20,8 @@ class OrderStatusController extends Controller
      */
     public function index()
     {
-        //
+
+
     }
 
     /**
@@ -41,10 +48,10 @@ class OrderStatusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\OrderStatus  $orderStatus
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(OrderStatus $orderStatus)
+    public function show(Order $order)
     {
         //
     }
@@ -52,10 +59,10 @@ class OrderStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\OrderStatus  $orderStatus
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrderStatus $orderStatus)
+    public function edit(Order $order)
     {
         //
     }
@@ -64,10 +71,10 @@ class OrderStatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\OrderStatus  $orderStatus
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderStatus $orderStatus)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -75,11 +82,13 @@ class OrderStatusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\OrderStatus  $orderStatus
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OrderStatus $orderStatus)
+    public function destroy(Order $order)
     {
         //
     }
+
+
 }

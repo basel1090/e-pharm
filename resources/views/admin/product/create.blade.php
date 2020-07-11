@@ -51,25 +51,25 @@
                 <div class="form-body ">
                     <div class="form-group has-success">
                         <label for="old_price">old price</label>
-                        <input type="number" class="form-control" value="{{old('title')}}" id="old_price" name="old_price">
+                        <input type="number" class="form-control" value="{{old('old_price')}}" id="old_price" name="old_price">
                     </div>
                 </div>
                 <div class="form-group ">
                     <label for="new_price">new price</label>
-                    <input   type="number" class="form-control" value="{{old('title')}}" id="new_price" name="new_price">
+                    <input   type="number" class="form-control" value="{{old('new_price')}}" id="new_price" name="new_price">
                 </div>
                 <div class="form-group ">
                     <label for="size">Size</label>
-                    <input   type="number" class="form-control" value="{{old('title')}}" id="size" name="size">
+                    <input   type="number" class="form-control" value="{{old('size')}}" id="size" name="size">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea  class="form-control"  id="description" value="{{old('title')}}" name="description" ></textarea>
+                    <textarea  class="form-control"  id="description" value="{{old('description')}}" name="description" ></textarea>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" name='active' value="{{old('title')?? ""}}" class="form-check-input" id="published">
-                    <label class="form-check-label" for='published'>Active</label>
+                    <input type="checkbox" name='active' value="{{old('active')?? ""}}" class="form-check-input" id="active">
+                    <label class="form-check-label" for='active'>Active</label>
                 </div>
                 <div class="card-footer mt-3">
                     <button type="submit" class="btn btn-primary">Submit</button>

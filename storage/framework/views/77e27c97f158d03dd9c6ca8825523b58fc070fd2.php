@@ -5,14 +5,15 @@
 
     <div class="portlet light ">
         <div class="portlet-body form">
-            <form method="post" enctype="multipart/form-data" action="<?php echo e(route('products.store')); ?>" role="form">
 
+            <form method="post" enctype="multipart/form-data" action="<?php echo e(route('products.update',$product->id)); ?>"
+                  role="form">
                 <?php echo csrf_field(); ?>
+                <?php echo method_field("PATCH"); ?>
                 <div class="form-body">
                     <div class="form-group has-success"><label for="form_control_1">Title</label>
                         <input type="text" class="form-control" id="form_control_1" name="title"
-                               value="<?php echo e(old('title')); ?>" placeholder="Enter your Title">
-
+                               value='<?php echo e(old('title')??$product->title); ?>' placeholder="Enter your Title">
                     </div>
                 </div>
                 <div class="form-group has-success">
@@ -36,7 +37,6 @@
                     </select>
                 </div>
 
-
                 <div class="form-group row">
                     <div class='col-sm-6'>
                         <label for="imageFile">Image</label>
@@ -49,25 +49,33 @@
                 <div class="form-body ">
                     <div class="form-group has-success">
                         <label for="old_price">old price</label>
-                        <input type="number" class="form-control" value="<?php echo e(old('title')); ?>" id="old_price" name="old_price">
+                        <input type="number" class="form-control" value="<?php echo e(old('old_price')??$product->old_price); ?>"
+                               id="old_price" name="old_price">
                     </div>
                 </div>
                 <div class="form-group ">
                     <label for="new_price">new price</label>
-                    <input   type="number" class="form-control" value="<?php echo e(old('title')); ?>" id="new_price" name="new_price">
+                    <input type="number" class="form-control" value="<?php echo e(old('new_price')??$product->new_price); ?>"
+                           id="new_price" name="new_price">
                 </div>
                 <div class="form-group ">
                     <label for="size">Size</label>
-                    <input   type="number" class="form-control" value="<?php echo e(old('title')); ?>" id="size" name="size">
+                    <input type="number" class="form-control" value="<?php echo e(old('size')??$product->size); ?>" id="size"
+                           name="size">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea  class="form-control"  id="description" value="<?php echo e(old('title')); ?>" name="description" ></textarea>
+                    <textarea class="form-control" id="description"
+                               name="description">
+                        <?php echo e(old('description')??$product->description); ?>
+
+                    </textarea>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" name='active' value="<?php echo e(old('title')?? ""); ?>" class="form-check-input" id="published">
-                    <label class="form-check-label" for='published'>Active</label>
+                    <input type="checkbox" name='active' class="form-check-input"  <?php echo e((old('active')??$product->active)?"checked":""); ?> value='1'  id="active">
+                    <label class="form-check-label" for='active'>Active</label>
+
                 </div>
                 <div class="card-footer mt-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -78,4 +86,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/obaida/mywebsites/ggateway/e-pharm/resources/views/admin/product/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\e-pharm\resources\views/admin/product/edit.blade.php ENDPATH**/ ?>

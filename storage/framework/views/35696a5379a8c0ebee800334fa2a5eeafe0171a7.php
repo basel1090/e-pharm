@@ -1,3 +1,4 @@
+
 <?php $__env->startSection("title", "Manage Products"); ?>
 <?php $__env->startSection("content"); ?>
 
@@ -76,4 +77,4 @@
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/obaida/mywebsites/ggateway/e-pharm/resources/views/admin/product/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\e-pharm\resources\views/admin/product/index.blade.php ENDPATH**/ ?>

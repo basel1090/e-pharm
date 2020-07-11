@@ -1,3 +1,4 @@
+
 <?php $__env->startSection("title", "Manage Brand"); ?>
 <?php $__env->startSection("content"); ?>
 <div class="portlet light ">
@@ -61,4 +62,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/obaida/mywebsites/ggateway/e-pharm/resources/views/admin/brand/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\e-pharm\resources\views/admin/brand/index.blade.php ENDPATH**/ ?>

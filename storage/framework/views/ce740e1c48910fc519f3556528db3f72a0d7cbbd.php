@@ -93,4 +93,4 @@
             <?php echo $__env->yieldContent("js"); ?>
     </body>
 </html>
-<?php /**PATH /home/obaida/mywebsites/ggateway/e-pharm/resources/views/layouts/admin.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\e-pharm\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

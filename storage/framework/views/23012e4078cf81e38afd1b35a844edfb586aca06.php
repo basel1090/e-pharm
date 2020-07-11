@@ -44,4 +44,4 @@
         </button>
     </div>
 <?php endif; ?>
-<?php /**PATH /home/obaida/mywebsites/ggateway/e-pharm/resources/views/shared/msg.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\e-pharm\resources\views/shared/msg.blade.php ENDPATH**/ ?>

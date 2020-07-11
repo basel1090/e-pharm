@@ -371,4 +371,4 @@
                 </div>
             </div>
         </div>
-<?php /**PATH /home/obaida/mywebsites/ggateway/e-pharm/resources/views/layouts/admin/header.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\e-pharm\resources\views/layouts/admin/header.blade.php ENDPATH**/ ?>

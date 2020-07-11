@@ -24,8 +24,16 @@
         <table align="center" class="table mt-3 table-striped table-bordered">
             <thead>
             <tr>
-                <th> Title</th>
-                <th>published</th>
+                <th> #</th>
+                <th> title</th>
+                <th> old_price</th>
+                <th>new_price</th>
+                <th> size</th>
+                <th>image</th>
+                <th> description</th>
+                <th>category_id</th>
+                <th>brand_id</th>
+                <th>active</th>
                 <th width="20%"></th>
 
             </tr>
@@ -33,14 +41,17 @@
             <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td>{{ $product->title }}</td>
+                    <td>{{ $product->id }}</td>
+                    <td><a href="{{ route('products.show' , $product->id) }}">{{ $product->title }}</a></td>
+                    <td>{{ $product->old_price }}</td>
+                    <td>{{ $product->new_price }}</td>
+                    <td>{{ $product->size }}</td>
+                    <td>{{ $product->image }}</td>
+                    <td>{{ $product->description }}</td>
+                    <td>{{ $product->category->title }}</td>
+                    <td>{{ $product->brand->title}}</td>
                     <td>
-                        @if($product->published)
-                            <a href="{{--route('category.pending',$product->id--)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
-                        @else
-                            <a href="{{--route('category.confirm',$product->id)--}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
-
-                        @endif
+                        <input type="checkbox" disabled {{ $product->active?"checked" : "" }}>
                     </td>
 
 

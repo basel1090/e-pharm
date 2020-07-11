@@ -31,7 +31,7 @@
             <div class="row static-info">
                 <div class="col-md-5 name"> Order Status: </div>
                 <div class="col-md-7 value">
-                    <span class="label label-success"> {{--{{$order->orderStatus->title}}--}} </span>
+                    <span class="label label-success"> {{$order->orderStatus->title}} </span>
                 </div>
             </div>
             <div class="row static-info">

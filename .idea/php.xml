@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="2cdc0a46-4b12-49ac-9dcf-4a88a3338a78" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/e-pharm.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/8RaKpvlzefOyR2mKjQ139YSeuNWeOCfvfEVcr7x7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/NGCg8lA967of4p9OAuX2BuHHpTeVnpf0cTAkAjT2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/Pw0ejGRBC2dqP3culvpYHhFYbZRyztNTVClzFkNh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/159711e96a7067a61c9a7d63d87f632de21a5d7e.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/159711e96a7067a61c9a7d63d87f632de21a5d7e.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/622055581011cfc2288651ce59a7f7a02de95241.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/622055581011cfc2288651ce59a7f7a02de95241.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/b231805db352f077e42828252809ae7be5d30f0e.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b231805db352f077e42828252809ae7be5d30f0e.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/b63e4b1d0c418ee08a14e0670b55a53a8b06656d.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b63e4b1d0c418ee08a14e0670b55a53a8b06656d.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
-=======
-    <list default="true" id="2e517044-fb69-4058-9626-9b1ab79d12b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
->>>>>>> 9c9cf4f81e7916e9c6878ea83490923e122eae62
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
@@ -145,50 +103,10 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1eROvzeFmkkYboP7sV5TlcuwjsO" />
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RunManager">
-    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="2cdc0a46-4b12-49ac-9dcf-4a88a3338a78" name="Default Changelist" comment="" />
-      <created>1594281173121</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1594281173121</updated>
-      <workItem from="1594281175806" duration="4825000" />
-      <workItem from="1594303602183" duration="10239000" />
-      <workItem from="1594459869086" duration="1887000" />
-      <workItem from="1594471456830" duration="329000" />
-      <workItem from="1594474047427" duration="11022000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="CUSTOM_LOADER" configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
+    </phpunit_settings>
   </component>
 </project>

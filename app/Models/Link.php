@@ -23,8 +23,6 @@ class Link extends Model
     public function parentMenu(){
         return $this->belongsTo("\App\Models\Link","parent_id","id");
     }
-
-    
     public function users()
     {
         //return $this->belongsToMany('App\User','users_links','link_id','user_id');

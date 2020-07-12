@@ -25,6 +25,7 @@ class UserController extends Controller
         //$admin = User::find(4);
         //$link = Link::find(1);
         //dd($link->users);
+
         $q=$request->get("q")??"";
 
         $users=User::whereRaw('true');
@@ -78,7 +79,7 @@ class UserController extends Controller
             return redirect(route("users.index"));
         }
 
-           return view("admin/user.show")->withuser($users);
+           return view("admin/user.show")->withUsers($users);
     }
 
 
@@ -124,9 +125,11 @@ class UserController extends Controller
         session()->flash("msg", "w:User Deleted Successfully");
         return redirect(route("users.index"));
     }
+    
     public function changePassword(){
         return view('admin.user.change_password');
     }
+
     public function postChangePassword(ChangePasswordRequest $request){
         $hasher = app('hash');
         if ($hasher->check($request->current_password, auth()->user()->password)) {

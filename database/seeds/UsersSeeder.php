@@ -15,11 +15,18 @@ class UsersSeeder extends Seeder
     {
         if(User::where('email','admin@epharm.com')->first()==null){
 
-            $user = User::create(['email'=>'admin@epharm.com','password'=>bcrypt('123456'),'name'=>'Extra-Pharm Admin']);      
+            $user = User::create([
+
+                'email'      =>'admin@epharm.com',
+                'password'   =>bcrypt('123456'),
+                'name'       =>'Extra-Pharm Admin'
+                
+                ]);      
 
             $links = Link::all();
             
             foreach($links as $link){
+                
                 UserLink::create([
                     'user_id' => $user->id,
                     'link_id' => $link->id,

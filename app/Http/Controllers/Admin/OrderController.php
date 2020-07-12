@@ -20,7 +20,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders=Order::orderBy('id','desc');
+
+       $orders=Order::orderBy('id','desc');
 
        $products=request()->get("products");
        $status=request()->get("status");
@@ -36,18 +37,17 @@ class OrderController extends Controller
         if($users){
             $orders->where('user_id',$users);
         }
-
+         
+        //To Make Foreach in View 
         $statuses=OrderStatus::orderBy('title')->get();
         $products=Product::orderBy('title')->get();
         $users=User::orderBy('name')->get();
 
 
         $orders = $orders->paginate(5)->appends([
-
             "status"=>$status,
             "products"=>$products,
             "users"=>$users
-
             ]);
 
         return view('admin.order.index', compact(['orders','statuses','products','users']));

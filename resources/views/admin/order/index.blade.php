@@ -9,24 +9,24 @@
                                       <select name="product" class="form-control">
                                      <option value=''>Any Product</option>
                                       @foreach($products as $product)
-                                    <option {{$product->id==request()->get('product')?"selected":""}} value='{{$product->id}}'>{{$product->title}}</option>
-                               @endforeach
+                                        <option {{$product->id==request()->get('product')?"selected":""}} value='{{$product->id}}'>{{$product->title}}</option>
+                                     @endforeach
                              </select>
                                     </div>
                                       <div class="col-sm-3">
                                       <select name="user" class="form-control">
-                                     <option value=''>Any User</option>
-                                      @foreach($users as $user)
-                                    <option {{$user->id==request()->get('user')?"selected":""}} value='{{$user->id}}'>{{$user->name}}</option>
-                               @endforeach
-                   </select>
+                                      <option value=''>Any User</option>
+                                    @foreach($users as $user)
+                                        <option {{$user->id==request()->get('user')?"selected":""}} value='{{$user->id}}'>{{$user->name}}</option>
+                                    @endforeach
+                             </select>
                                     </div>
                                     <div class="col-sm-3">
                                     <select name="status" class="form-control">
                                     <option value=''>Any Status</option>
-                             @foreach($statuses as $status)
-                                    <option {{ $status->id==request()->get('status')?"selected":"" }} value='{{ $status->id }}'>{{ $status->title }}</option>
-                               @endforeach
+                                  @foreach($statuses as $status)
+                                        <option {{ $status->id==request()->get('status')?"selected":"" }} value='{{ $status->id }}'>{{ $status->title }}</option>
+                                  @endforeach
                             </select>
                                     </div>
                                     <div class="col-sm-3">
@@ -52,7 +52,7 @@
                                             <tbody>
                                             @foreach($orders as $order)
                                                 <tr>
-                                                
+
                                                 <td>{{ $order->product->title }}</td>
                                                 <td>{{ $order->user->name }}</td>
                                                 <td>{{ $order->quantity }}</td>
@@ -66,7 +66,7 @@
                                                             <a href="{{route('order.cancel',$order->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Cancel</a>
                                                         @else
                                                             <span>{{ $order->orderStatus->title }}</span>
-                                                        @endif                                                    </td>
+                                                        @endif               </td>
                                                     
                                                 </tr>
                                                 @endforeach

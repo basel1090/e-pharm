@@ -76,13 +76,6 @@ class CategoryController extends Controller
         return view("admin.category.show")->withCategory($category);
     }
 
-    public function active($id){
-        $category_active=Category::find($id);
-        $category_active->update(['published'=>1]);
-        session()->flash('msg','s: Category has been confired');
-        return redirect()->back();
-
-    }
     public function status($id){
         $category=Category::find($id);
         $category->update(['published'=>!$category->published]);

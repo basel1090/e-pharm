@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\BrandRequest;
-
 use App\Models\Brand;
 
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
@@ -45,11 +43,10 @@ class BrandController extends Controller
      */
     public function store(BrandRequest $request)
     {
-
         Brand::create($request->all());
         \Session::flash("msg","Brand created succesfully");
         return redirect(route('brands.index'));
-    }
+	}
 
     /**
      * Display the specified resource.
@@ -107,7 +104,6 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-
         Brand::destroy($id);
         session()->flash("msg", "w: Brand Deleted Successfully");
         return redirect(route("brands.index"));

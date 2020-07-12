@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Models\Brand;
 
 use App\Models\Category;
@@ -15,14 +14,6 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     *
-     *
-     */
-    public  $search ;
     public function index()
     {
 
@@ -74,14 +65,9 @@ class ProductController extends Controller
         $categories = Category::get();
         $brands = Brand::get();
         return view('admin.product.create')->with('categories', $categories)->with('brands', $brands);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CreateRequest $request)
     {
         $request['active'] = $request['active'] ? 1 : 0;
@@ -91,13 +77,6 @@ class ProductController extends Controller
         session()->flash('msg', "s: product create successfully");
         return redirect(route('products.index'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $products = Product::find($id);
@@ -111,12 +90,6 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
 
@@ -132,13 +105,6 @@ class ProductController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(EditRequest $request,  $id)
     {
         if (!$request->active) {
@@ -151,15 +117,8 @@ class ProductController extends Controller
         Product::find($id)->update($request->all());
         session()->flash("msg", "The Product was updated");
         return redirect(route("products.index"));
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($product)
     {
         Product::destroy($product);

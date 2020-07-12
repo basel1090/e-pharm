@@ -40,10 +40,7 @@ class User extends Authenticatable
 
     public function links()
     {
-        return $this->belongsToMany('App\Models\Link','users_links');                                                                        
+        return $this->belongsToMany('App\Models\Link','users_links');
         //return $this->belongsToMany('App\Models\Link','users_links','user_id','link_id');
-    }
-    public function products(){
-        return $this->hasMany('App\User');
     }
 }

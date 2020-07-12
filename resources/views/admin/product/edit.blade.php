@@ -15,7 +15,7 @@
                 <div class="form-body">
                     <div class="form-group has-success"><label for="form_control_1">Title</label>
                         <input type="text" class="form-control" id="form_control_1" name="title"
-                               value='{{old('title')??$product->title}}' placeholder="Enter your Title">
+                               value='{{old('title',$product->title)}}' placeholder="Enter your Title">
                     </div>
                 </div>
                 <div class="form-group has-success">
@@ -24,7 +24,7 @@
                         <option value="">Select Category</option>
                         @foreach($categories as $category)
                             <option
-                                {{old('category_id')== $category->id?"selected":""}} value='{{$category->id}}'>{{$category->title}}</option>
+                                {{old('category_id',$product->category_id)== $category->id?"selected":""}} value='{{$category->id}}'>{{$category->title}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -34,7 +34,7 @@
                         <option value="">Select Category</option>
                         @foreach($brands as $brand)
                             <option
-                                {{old('brand_id')== $brand->id?"selected":""}} value='{{$brand->id}}'>{{$brand->title}}</option>
+                                {{old('brand_id',$product->brand_id)== $brand->id?"selected":""}} value='{{$brand->id}}'>{{$brand->title}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -51,7 +51,7 @@
                 <div class="form-body ">
                     <div class="form-group has-success">
                         <label for="old_price">old price</label>
-                        <input type="number" class="form-control" value="{{old('old_price')??$product->old_price}}"
+                        <input type="number" class="form-control" value="{{old('old_price',$product->old_price)}}"
                                id="old_price" name="old_price">
                     </div>
                 </div>
@@ -68,13 +68,11 @@
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description"
-                               name="description">
-                        {{old('description')??$product->description}}
+                    <textarea class="form-control" id="description" name="description">{{old('description',$product->description)}}
                     </textarea>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" name='active' class="form-check-input"  {{ (old('active')??$product->active)?"checked":"" }} value='1'  id="active">
+                    <input type="checkbox" name='active' class="form-check-input"  {{old('active',$product->active)?"checked":"" }} value='1'  id="active">
                     <label class="form-check-label" for='active'>Active</label>
 
                 </div>

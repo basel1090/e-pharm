@@ -8,7 +8,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use  App\Http\Requests\ProductRequest;
+use  App\Http\Requests\Product\CreateRequest;
+use  App\Http\Requests\Product\EditRequest;
 
 use App\Http\Controllers\Controller;
 
@@ -41,20 +42,26 @@ class ProductController extends Controller
             $products->where('title' , 'like' , "%{$this->search['name']}%");
         }
         if ($this->search['category']){
-            $products->whereHas('category' ,function ($query ){
+            /*$products->whereHas('category' ,function ($query ){
                 $query->where('title' , 'like' , "%{$this->search['category']}%");
-            });
+            });*/
+            $products->where('category_id' , $this->search['category']);
         }
         if ($this->search['brand']){
-            $products->whereHas('brand' ,function ($query ){
+            /*$products->whereHas('brand' ,function ($query ){
                 $query->where('title' , 'like' , "%{$this->search['brand']}%");
-            });
+            });*/
+            $products->where('brand_id' , $this->search['brand']);
         }
         if ($this->search['active'] != null){
             $products->where('active' , $this->search['active']);
         }
+        $categories = Category::get();
+        $brands = Brand::get();
         $products = $products->paginate(10)->appends($this->search);
-        return view('admin.product.index')->with('products', $products);
+        return view('admin.product.index')->with('products', $products)
+            ->with('categories', $categories)
+            ->with('brands', $brands);
     }
 
     /**
@@ -75,7 +82,7 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(CreateRequest $request)
     {
         $request['active'] = $request['active'] ? 1 : 0;
         $imageName = basename($request->imageFile->store("public"));
@@ -132,10 +139,14 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request,  $id)
+    public function update(EditRequest $request,  $id)
     {
         if (!$request->active) {
             $request['active'] = 0;
+        }
+        if($request->imageFile){            
+            $imageName = basename($request->imageFile->store("public"));
+            $request['image'] = $imageName;
         }
         Product::find($id)->update($request->all());
         session()->flash("msg", "The Product was updated");

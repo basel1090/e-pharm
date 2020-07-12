@@ -7,10 +7,23 @@
             <input type='text' class="form-control" placeholder="enter product name" name="name"/></div>
 
         <div class='col-sm-2'>
-            <input type='text' class="form-control" placeholder="enter category" name="category"/></div>
-
+        <select name="category" class="form-control">
+                        <option value="">Any Category</option>
+                        @foreach($categories as $category)
+                            <option
+                                {{request()->get('category')== $category->id?"selected":""}} value='{{$category->id}}'>{{$category->title}}</option>
+                        @endforeach
+                    </select>
+        </div>
         <div class='col-sm-2'>
-            <input type='text' class="form-control" placeholder="enter brand" name="brand"/></div>
+            <select name="brand" class="form-control">
+                <option value="">Any Brand</option>
+                @foreach($brands as $brand)
+                    <option
+                        {{request()->get('brand')== $brand->id?"selected":""}} value='{{$brand->id}}'>{{$brand->title}}</option>
+                @endforeach
+            </select>
+        </div>
         <div class='col-sm-2'>
             <select name='active' class='form-control'>
                 <option value=''>Any status</option>
@@ -29,16 +42,14 @@
         <table align="center" class="table mt-3 table-striped table-bordered">
             <thead>
             <tr>
-                <th> #</th>
-                <th> title</th>
-                <th> old_price</th>
-                <th>new_price</th>
-                <th> size</th>
-                <th>image</th>
-                <th> description</th>
-                <th>category</th>
-                <th>brand</th>
-                <th>active</th>
+                <th> Title</th>
+                <th> Old Price</th>
+                <th>New Price</th>
+                <th> Size</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Active</th>
                 <th width="20%"></th>
 
             </tr>
@@ -46,7 +57,6 @@
             <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td>{{ $product->id }}</td>
                     <td><a href="{{ route('products.show' , $product->id) }}">{{ $product->title }}</a></td>
                     <td>{{ $product->old_price }}</td>
                     <td>{{ $product->new_price }}</td>
@@ -64,7 +74,6 @@
                             </div>
                         </div>
                     </td>
-                    <td>{{ $product->description }}</td>
                     <td>{{ $product->category->title }}</td>
                     <td>{{ $product->brand->title}}</td>
                     <td>

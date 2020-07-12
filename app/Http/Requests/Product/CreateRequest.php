@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,7 +31,7 @@ class ProductRequest extends FormRequest
             'old_price' => 'required',
             'new_price' => 'required',
             'size' => 'required',
-            'imageFile' => 'required',
+            'imageFile' => 'required|image',
             'description' => 'min:10',
             'category_id' => 'required',
             'brand_id' => 'required',

@@ -39,9 +39,9 @@
                     <td>{{ $category->title }}</td>
                    <td>
                        @if($category->published)
-                           <a href="{{route('category.pending',$category->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
+                           <a href="{{route('category.status',$category->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
                        @else
-                           <a href="{{route('category.confirm',$category->id)}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
+                           <a href="{{route('category.status',$category->id)}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
 
                        @endif
                    </td>

@@ -83,10 +83,10 @@ class CategoryController extends Controller
         return redirect()->back();
 
     }
-    public function pending($id){
-        $category_pending=Category::find($id);
-        $category_pending->update(['published'=>0]);
-        session()->flash('msg','w: Category has been Pending');
+    public function status($id){
+        $category=Category::find($id);
+        $category->update(['published'=>!$category->published]);
+        session()->flash('msg','w: Category status updated');
         return redirect()->back();
     }
 

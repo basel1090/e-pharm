@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix("admin")->middleware(["auth"/*,'permissions'*/])->group(function(){
 
     Route::resource("categories",'Admin\CategoryController');
+    Route::get('/categories/status/{id}','Admin\CategoryController@status')->name('category.status');
     Route::resource("brands",'Admin\BrandController');
     Route::resource("products",'Admin\ProductController');
     Route::resource("orders",'Admin\OrderController');

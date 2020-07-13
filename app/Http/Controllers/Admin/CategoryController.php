@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = Category::where('published','=','1')->orderBy('id','desc');
+        $categories = Category::whereRaw('true')->orderBy('id','desc');
         $q=request()->get("q")??"";
         $published=request()->get("published");
         if($q){
@@ -31,7 +31,7 @@ class CategoryController extends Controller
                 $headings = true
             );
         }
-        $categories = $categories->where('published','=','1')->paginate(5)->appends(["q"=>$q,"published"=>$published]);
+        $categories = $categories->paginate(5)->appends(["q"=>$q,"published"=>$published]);
         return view('admin.category.index')->withCategories($categories);
     }
     /**

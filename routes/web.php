@@ -28,6 +28,7 @@ Route::prefix("admin")->namespace("Admin")->middleware(["auth","role:admin",'per
     Route::resource("brands",'BrandController');
     Route::resource("products",'ProductController');
     Route::resource("orders",'OrderController');
+    Route::get("/users/{id}/status","UserController@status")->name('user.status');
     Route::get("/users/{id}/permissions","UserController@permissions")->name('permissions');
     Route::post("/users/{id}/permissions","UserController@postPermissions")->name('permissions-post');
     Route::resource("users",'UserController');

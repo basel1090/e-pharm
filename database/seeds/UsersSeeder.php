@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Models\Link;
+use Spatie\Permission\Models\Role;
 use App\Models\UserLink;
 class UsersSeeder extends Seeder
 {
@@ -13,9 +14,12 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        $adminRole = Role::create(['name'=>'admin']);
+        $customerRole = Role::create(['name'=>'customer']);
         if(User::where('email','admin@epharm.com')->first()==null){
 
             $user = User::create(['email'=>'admin@epharm.com','password'=>bcrypt('123456'),'name'=>'Extra-Pharm Admin']);      
+            $user->assignRole('admin');
 
             $links = Link::all();
             

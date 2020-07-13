@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix("admin")->namespace("Admin")->middleware(["auth","role:admin"/*,'permissions'*/])->group(function(){
+Route::prefix("admin")->namespace("Admin")->middleware(["auth","role:admin",'permissions'])->group(function(){
 
     Route::resource("categories",'CategoryController');
     Route::get("category/{id}",'CategoryController@status')->name("category.status");

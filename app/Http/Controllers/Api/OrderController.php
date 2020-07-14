@@ -45,5 +45,20 @@ class OrderController extends Controller
         return $orders;
     }
 
+    public function delete($id){
+     
+        $order = Order::where('id', $id)
+        ->where("user_id" , request()->user()->id)
+        ->where("order_status_id", 1)->first();
+        if($order){
+            $order->delete();
+            return response()->json(["msg" => "Deleted Succssfuly"]);
+        }
+        else{
+            return response()->json(["msg" => "UnDeleted Succssfuly"]);
+        }
+
+    }
+  
 
 }

@@ -17,10 +17,10 @@ class Order extends Model
     protected $appends = ["product_title","order_status_name"];
     public function getProductTitleAttribute(){
         //return $this->product->title;
-        return Product::find($this->product_id)->title;
+        return Product::find($this->product_id)->title??'';
     }
     public function getOrderStatusNameAttribute(){
-        return OrderStatus::find($this->order_status_id)->title;
+        return OrderStatus::find($this->order_status_id)->title??'';
         //return $this->orderStatus->title;
     }
     public function user(){

@@ -108,8 +108,6 @@
         </table>
 
         {{ $orders->links() }}
-
-
     @else
         <div class="alert alert-warning">Sorry, there is no results to your search</div>
     @endif

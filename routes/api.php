@@ -28,5 +28,13 @@ Route::middleware(['auth:api'])->group(function(){
 
     Route::post('order/add',"Api\OrderController@create");
     Route::get('orders',"Api\OrderController@index");
+
+
+    Route::delete('order/delete/{id}', 'Api\OrderController@delete');
+
+    Route::delete('change-password', 'Api\OrderController@changePassword');
+
+        
+ 
 });
 

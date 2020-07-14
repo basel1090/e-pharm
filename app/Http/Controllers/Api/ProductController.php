@@ -10,7 +10,6 @@ use App\Http\Requests\Product\editRequest;
 
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Product;
 
 class ProductController extends Controller
 {

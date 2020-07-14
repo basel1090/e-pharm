@@ -27,7 +27,7 @@ class OrderController extends Controller
         $order_status_id = \request()->get('order_status_id');
 
 
-        $orders=Order::whereRaw('true');
+        $orders=Order::orderBy('id','desc');
         if ($user_id!="")
         {
             $orders->where('user_id' , $user_id);

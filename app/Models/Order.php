@@ -14,6 +14,15 @@ class Order extends Model
         'total_price',
         'order_status_id',
     ];
+    protected $appends = ["product_title","order_status_name"];
+    public function getProductTitleAttribute(){
+        //return $this->product->title;
+        return Product::find($this->product_id)->title;
+    }
+    public function getOrderStatusNameAttribute(){
+        return OrderStatus::find($this->order_status_id)->title;
+        //return $this->orderStatus->title;
+    }
     public function user(){
         return $this->belongsTo("App\User");
     }
@@ -23,5 +32,4 @@ class Order extends Model
     public function orderStatus(){
         return $this->belongsTo("App\Models\OrderStatus");
     }
-
 }

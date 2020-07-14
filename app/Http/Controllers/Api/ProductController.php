@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\UserRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\editRequest;
+
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -16,6 +19,8 @@ class ProductController extends Controller
         $brands = Brand::select('id','title')->get();
         return $brands;
     }
+
+
     public function categories()
     {
         $categories = Category::where('published',1)->select('id','title'/*,'published'*/)->get();

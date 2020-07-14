@@ -22,9 +22,9 @@ class UserRequest extends FormRequest
     {
         $id=$this->route('user');
         return [
-            'email'=>'required|unique:users,email,'.$id.',id',
+            'email'=>'required|email|unique:users,email,'.$id.',id',
             'name'=>'required' ,
-            'password' => 'required',
+            'password' => 'required|min:6',
         ];
     }
 }

@@ -18,6 +18,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function status($id){
+        $user = User::find($id);
+        if($user){
+            $user->update(['is_active'=>!$user->is_active]);
+            session()->flash("msg", "s: Status updated Successfully");
+            return redirect(route("users.index"));
+        }
+    }
     public function index(Request $request)
     {
         //$links = auth()->user()->links;
@@ -26,13 +34,18 @@ class UserController extends Controller
         //$link = Link::find(1);
         //dd($link->users);
         $q=$request->get("q")??"";
+        $role = $request->get("role")??"";
 
         $users=User::whereRaw('true');
+        if($role){
+            $users->whereRaw('id in (select model_id from model_has_roles where model_id=users.id
+            and role_id =?)',$role);
+        }
 
         if($q){
             $users->where("name","like","%$q%");
         }
-        $users=$users->paginate(3)->appends(["q"=>$q,]);
+        $users=$users->orderBy('id','desc')->paginate(10)->appends(["q"=>$q,]);
         return view("admin.user.index")->with("users",$users);
     }
 

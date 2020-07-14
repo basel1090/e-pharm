@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware("auth:api")->get('/user', function (Request $request) {
+Route::middleware(['auth:api'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('register',"Api\UserController@register");
+Route::post('login',"Api\UserController@login");
+
+Route::middleware(['auth:api'])->group(function(){
+    Route::get('brands',"Api\ProductController@brands");
+    Route::get('categories',"Api\ProductController@categories");
+    Route::get('products',"Api\ProductController@products");
+    Route::get('orders',"Api\OrderController@myorder");
+    Route::post('orders',"Api\OrderController@AddOrder");
+});
+

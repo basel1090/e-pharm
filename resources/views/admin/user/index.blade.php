@@ -7,10 +7,18 @@
 
 
             <form class='row'>
-                <div class="col-sm-8 ">
+                <div class="col-sm-5 ">
                     <input autofocus value="{{ request()->get('q') }}" type="text" class="form-control" placeholder="Enter Your Search" name="q"  />
                 </div>
-
+                 <div class='col-sm-2'>
+                    <select name="role" class="form-control">
+                        <option value="">Any Role</option>
+                        @foreach(\Spatie\Permission\Models\Role::all() as $role)
+                            <option
+                                {{request()->get('role')== $role->id?"selected":""}} value='{{$role->id}}'>{{$role->name}}</option>
+                        @endforeach
+                    </select>
+        </div>
                 <div class="col-sm-3 ">
                     <button class='btn btn-primary'><i class='fa fa-search'></i> Search</button>
                     <a href="{{ route("users.create") }}" class="btn btn-success"><i class="fa fa-plus"></i> Create New user</a>
@@ -28,6 +36,8 @@
                             <tr>
                                 <th> Name </th>
                                 <th> Email </th>
+                                <th> Role </th>
+                                <th> Status </th>
                                 <th> Created At</th>
 
                             </tr>
@@ -37,7 +47,13 @@
                             <tr>
                                 <td> {{$user->name}} </td>
                                 <td>{{$user->email}}</td>
+                                <td>{{$user->roles[0]->name??'Without Roles'}}</td>
                                {{-- <td> {{$user-> email_verified_at }}</td>--}}
+                               <td>
+                                @if($user->hasRole('customer'))
+                                <a href='{{ route("user.status",$user->id) }}' class='btn btn-xs btn-{{!$user->is_active?"info":"danger"}}'>{{ $user->is_active?"Reject":"Approve"}}</a>
+                                @endif
+                                </td>
                                 <td> {{$user->created_at}} </td>
 
                                 <td width="20%">

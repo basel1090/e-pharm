@@ -10,15 +10,21 @@ composer require spatie/laravel-permission
 3. php artisan migrate
 
 
-
-4. To create new role
-use Spatie\Permission\Models\Role;
-Role::create(['name'=>'admin']);
-
-5. For User model you miust
+4. For User model you miust
 use Spatie\Permission\Traits\HasRoles;
 and 
 use HasRoles; // inside the Class
+
+5. To create new role
+use Spatie\Permission\Models\Role;
+Role::create(['name'=>'admin']);
+
+6. To Assign user to specific Role
+$user->assignRole('admin')
+To check validity
+$user->hasRole('admin')
+
+
 
 6. Go to Kernal and add
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,

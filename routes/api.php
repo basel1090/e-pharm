@@ -24,4 +24,7 @@ Route::post('login',"Api\UserController@login");
 Route::middleware(['auth:api'])->group(function(){
     Route::get('brands',"Api\ProductController@brands");
     Route::get('categories',"Api\ProductController@categories");
+    Route::get('products',"Api\ProductController@products");
+    Route::post('orders-post',"Api\OrderController@create");
+    Route::get('orders',"Api\OrderController@index");
 });

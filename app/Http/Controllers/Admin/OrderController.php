@@ -47,7 +47,7 @@ class OrderController extends Controller
         $status=OrderStatus::all();
         $users=User::all();
         $products=Product::orderby('title')->get();
-        $orders=$orders->paginate(5)->appends([
+        $orders=$orders->orderBy('id','DESC')->paginate(5)->appends([
             "user_id"=>$user_id,
             "price"=>$price,
             "product_id"=>$product_id,

@@ -36,6 +36,7 @@ class CreateRequest extends FormRequest
             'category_id' => 'required',
             'brand_id' => 'required',
 
+
 		];
     }
 }

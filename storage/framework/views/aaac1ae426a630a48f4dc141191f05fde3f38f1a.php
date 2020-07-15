@@ -109,9 +109,11 @@
 
         <?php echo e($orders->links()); ?>
 
+
+
     <?php else: ?>
         <div class="alert alert-warning">Sorry, there is no results to your search</div>
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Api\e-pharm\resources\views/admin/orders/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make("layouts.admin", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\GL62\Desktop\NDC\Project\CMS\e-pharm\resources\views/admin/orders/index.blade.php ENDPATH**/ ?>

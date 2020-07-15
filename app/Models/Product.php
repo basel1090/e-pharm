@@ -27,10 +27,10 @@ class Product extends Model
         //return  Category::find($this->brand_id)->title;
         return $this->category->title??'';
     }
-    public function category (){
+    public function category(){
         return $this->belongsTo('App\Models\Category' , 'category_id' , 'id');
     }
-    public function brand (){
+    public function brand(){
         return $this->belongsTo('App\Models\Brand' , 'brand_id' , 'id');
     }
 }

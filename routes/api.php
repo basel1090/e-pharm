@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:api'])->get('/user', function (Request $request) {
+    dd($request->headers->get("authorization"));
     return $request->user();
 });
 
@@ -24,17 +25,16 @@ Route::post('login',"Api\UserController@login");
 Route::middleware(['auth:api'])->group(function(){
     Route::get('brands',"Api\ProductController@brands");
     Route::get('categories',"Api\ProductController@categories");
+
     Route::get('products',"Api\ProductController@products");
+    Route::post('product/add',"Api\ProductController@addProduct");
+
 
     Route::post('order/add',"Api\OrderController@create");
     Route::get('orders',"Api\OrderController@index");
-
-
     Route::delete('order/delete/{id}', 'Api\OrderController@delete');
 
-    Route::delete('change-password', 'Api\OrderController@changePassword');
-
-        
- 
+    Route::post('changepassword',"Api\UserController@postChangePassword");
+    Route::post('signout',"Api\UserController@signOut");
 });
 

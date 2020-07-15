@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ChangePasswordRequest extends FormRequest
+class AddRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,15 @@ class ChangePasswordRequest extends FormRequest
      */
     public function rules()
     {
+//        dd($this->all());
+        $id = $this->route('product');
+
 		return [
-            'current_password' => 'required',
-            'new_password' => 'required|min:6|confirmed',
-            //confirmed must have new_password_confirmation
-		];	
+            'title' => 'required',
+            'imageFile' => 'required|image',
+           
+
+
+		];
     }
 }

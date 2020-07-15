@@ -43,6 +43,8 @@ class OrderController extends Controller
         $orders = Order::where("user_id", request()->user()->id)
         ->paginate(10);
         return $orders;
+
+        //return response()->json(["msg"=>"مبروك"])
     }
 
     public function delete($id){
@@ -55,7 +57,7 @@ class OrderController extends Controller
             return response()->json(["msg" => "Deleted Succssfuly"]);
         }
         else{
-            return response()->json(["msg" => "UnDeleted Succssfuly"]);
+            return response()->json(["msg" => "Record Un default"]);
         }
 
     }

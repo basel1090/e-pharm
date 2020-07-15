@@ -27,7 +27,7 @@ class OrderController extends Controller
        return $order;
     }
 
-    public function index(){
+    public function index()  /*My order*/{
         /*$orders=Order::leftJoin("products","product_id","products.id")
             ->leftJoin("order_statuses","order_status_id","order_statuses.id")
             ->where("user_id", request()->user()->id)

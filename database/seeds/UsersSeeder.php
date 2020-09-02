@@ -16,13 +16,13 @@ class UsersSeeder extends Seeder
     {
         $adminRole = Role::create(['name'=>'admin']);
         $customerRole = Role::create(['name'=>'customer']);
-        if(User::where('email','admin@epharm.com')->first()==null){
+        if(User::where('email','admin@restaurant.com')->first()==null){
 
-            $user = User::create(['email'=>'admin@epharm.com','password'=>bcrypt('123456'),'name'=>'Extra-Pharm Admin']);      
+            $user = User::create(['email'=>'admin@restaurant.com','password'=>bcrypt('123456'),'name'=>'Restaurant Manegment']);
             $user->assignRole('admin');
 
             $links = Link::all();
-            
+
             foreach($links as $link){
                 UserLink::create([
                     'user_id' => $user->id,

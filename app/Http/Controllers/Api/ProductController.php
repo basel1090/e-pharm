@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Product\CreateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\UserRequest;
@@ -10,13 +11,23 @@ use App\Http\Requests\Product\editRequest;
 
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Product;
+
 
 class ProductController extends Controller
 {
+
+    public function add_product(CreateRequest $request)
+    {
+        $request['active'] = $request['active'] ? 1 : 0;
+        $imageName = basename($request->imageFile->store("public"));
+        $request['image'] = $imageName;
+        Product::create($request->all());
+        return response()->json(["message"=>"Added"]);
+
+    }
     public function brands()
     {
-        $brands = Brand::select('id','title')->get();
+        $brands = Brand::select('id', 'title')->get();
         return $brands;
     }
 
@@ -59,7 +70,7 @@ class ProductController extends Controller
             'new_price'
         ])->paginate(10);*/
 
-        
+
         $products = Product::where('active',1);
         if($q){
             $products->where("title","like","%{$q}%");

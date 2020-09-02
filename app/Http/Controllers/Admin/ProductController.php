@@ -63,8 +63,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::get();
-        $brands = Brand::get();
-        return view('admin.product.create')->with('categories', $categories)->with('brands', $brands);
+
+        return view('admin.product.create')->with('categories', $categories);
 
     }
 
@@ -96,12 +96,11 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $categories = Category::all();
-        $brands = Brand::all();
         if($product==null){
             session()->flash("msg", "The Product was not found");
             return redirect(route("product.index"));
         }
-        return view("admin.product.edit")->withProduct($product)->withCategories($categories)->withBrands($brands);
+        return view("admin.product.edit")->withProduct($product)->withCategories($categories);
 
     }
 
@@ -110,7 +109,8 @@ class ProductController extends Controller
         if (!$request->active) {
             $request['active'] = 0;
         }
-        if($request->imageFile){            
+
+        if($request->imageFile){
             $imageName = basename($request->imageFile->store("public"));
             $request['image'] = $imageName;
         }

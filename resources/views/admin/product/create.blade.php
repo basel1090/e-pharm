@@ -27,17 +27,6 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group has-success">
-                    <label for="brand_id">Brand</label>
-                    <select name="brand_id" class="form-control">
-                        <option value="">Select Category</option>
-                        @foreach($brands as $brand)
-                            <option
-                                {{old('brand_id')== $brand->id?"selected":""}} value='{{$brand->id}}'>{{$brand->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
 
                 <div class="form-group row">
                     <div class='col-sm-6'>

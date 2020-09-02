@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-            
+
                 <div class="page-actions">
                     <!--div class="btn-group">
                         <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
@@ -342,8 +342,8 @@
                             </li-->
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="{{ asset('metronic/assets/layouts/layout2/img/avatar3_small.jpg') }}" />
-                                    <span class="username username-hide-on-mobile"> {{ auth()->user()->name }} {{-- Auth::user()->name --}} </span>
+                                    <img alt="" class="img-circle" src="{{ asset('metronic/assets/layouts/layout2/img/1.jpg') }}" />
+                                    <span class="username username-hide-on-mobile"> {{auth()->user()->name}} </span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">

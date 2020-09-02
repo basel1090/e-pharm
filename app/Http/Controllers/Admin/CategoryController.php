@@ -55,6 +55,8 @@ class CategoryController extends Controller
         if(!$request->published){
             $request['published']=0;
         }
+        $imageName = basename($request->imageFile->store("public"));
+        $request['image'] = $imageName;
         Category::create($request->all());
         \Session::flash("msg","category created succesfully");
         return redirect(route('categories.index'));
@@ -110,6 +112,10 @@ class CategoryController extends Controller
     {
         if(!$request->published){
             $request['published']=0;
+        }
+        if($request->imageFile){
+            $imageName = basename($request->imageFile->store("public"));
+            $request['image'] = $imageName;
         }
         Category::find($id)->update($request->all());
         session()->flash("msg", "The category was updated");

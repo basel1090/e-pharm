@@ -14,9 +14,9 @@
             </select></div>
         <div class='col-sm-2'>
             <button type='submit' class='btn btn-primary'><i class="fa fa-search"></i>search</button>
-            
-            <button name="export" value='Export' type='submit' class='btn btn-success'><i class="fa fa-excel"></i>Export</button>
-        
+
+{{--            <button name="export" value='Export' type='submit' class='btn btn-success'><i class="fa fa-excel"></i>Export</button>--}}
+
         </div>
         <div class="col-2">
 
@@ -27,8 +27,9 @@
         <table align="center" class="table mt-3 table-striped table-bordered">
             <thead>
             <tr>
-                <th> Title</th>
-                <th>published</th>
+                <th> Title </th>
+                <th> Image </th>
+                <th>published </th>
                 <th width="20%"></th>
 
             </tr>
@@ -37,6 +38,8 @@
             @foreach($categories as $category)
                 <tr>
                     <td>{{ $category->title }}</td>
+                    <td  width="20%">
+                        <img src="{{asset("storage/".$category->image)}}" class="img-responsive img-circle" alt="No Image Found" style="width:80px">
                    <td>
                        @if($category->published)
                            <a href="{{route('category.status',$category->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>

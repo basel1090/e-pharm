@@ -27,6 +27,11 @@ Route::middleware(['auth:api'])->group(function(){
     Route::get('products',"Api\ProductController@products");
 
     Route::post('order/add',"Api\OrderController@create");
+    Route::post('add_product',"Api\ProductController@add_product");
     Route::get('orders',"Api\OrderController@index");
+    Route::get('order_delete/{id}',"Api\OrderController@destroy");
+    Route::post('change-password',"Api\OrderController@postChangePassword");
+    Route::post('logout',"Api\OrderController@signout");
+
 });
 

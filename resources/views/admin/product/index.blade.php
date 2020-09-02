@@ -16,15 +16,6 @@
                     </select>
         </div>
         <div class='col-sm-2'>
-            <select name="brand" class="form-control">
-                <option value="">Any Brand</option>
-                @foreach($brands as $brand)
-                    <option
-                        {{request()->get('brand')== $brand->id?"selected":""}} value='{{$brand->id}}'>{{$brand->title}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class='col-sm-2'>
             <select name='active' class='form-control'>
                 <option value=''>Any status</option>
                 <option {{request()->get("published")?"selected":""}} value='1'>Active</option>
@@ -48,9 +39,9 @@
                 <th> Size</th>
                 <th>Image</th>
                 <th>Category</th>
-                <th>Brand</th>
+
                 <th>Active</th>
-                <th width="20%"></th>
+{{--                <th width="20%"></th>--}}
 
             </tr>
             </thead>
@@ -74,8 +65,9 @@
                             </div>
                         </div>
                     </td>
-                    <td>{{ $product->category->title }}</td>
-                    <td>{{ $product->brand->title}}</td>
+
+                    <td>{{ $product->category->title??'' }}</td>
+
                     <td>
                         <input type="checkbox" disabled {{ $product->active?"checked" : "" }}>
                     </td>

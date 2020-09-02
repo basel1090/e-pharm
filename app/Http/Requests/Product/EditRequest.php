@@ -34,7 +34,7 @@ class EditRequest extends FormRequest
             'imageFile' => 'image',
             'description' => 'min:10',
             'category_id' => 'required',
-            'brand_id' => 'required',
+
 
 		];
     }

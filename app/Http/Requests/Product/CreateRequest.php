@@ -34,7 +34,6 @@ class CreateRequest extends FormRequest
             'imageFile' => 'required|image',
             'description' => 'min:10',
             'category_id' => 'required',
-            'brand_id' => 'required',
 
 		];
     }

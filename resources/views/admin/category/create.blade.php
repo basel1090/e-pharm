@@ -6,13 +6,21 @@
 @section("content")
 
 
-<form method="post" action="{{ route('categories.store') }}" role="form">
+<form method="post" action="{{ route('categories.store') }}" enctype="multipart/form-data"role="form">
 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="title">Title</label>
                     <input value='{{old("title")}}' type="text" autofocus class="{{ $errors->has('title')?"is-invalid":""}} form-control" id="title" name="title" placeholder="Enter Category Name">
                   </div>
+                    <div class="form-group row">
+                        <div class='col-sm-6'>
+                            <label for="imageFile"> Choose Image</label>
+                            <div class="custom-file">
+                                <input type="file"  autofocus class="form-control" name="imageFile" class="custom-file-input" id="imageFile">
+                            </div>
+                        </div>
+                    </div>
                   <div class="form-check">
                     <input {{ old('show')?"published":"" }} value='1' type="checkbox" name='published' class="form-check-input" id="show">
                     <label class="form-check-label" for='published'>Published</label>

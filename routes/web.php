@@ -25,10 +25,19 @@ Route::prefix("admin")->namespace("Admin")->middleware(["auth","role:admin",'per
 
     Route::resource("categories",'CategoryController');
     Route::get("category/{id}",'CategoryController@status')->name("category.status");
-    Route::resource("brands",'BrandController');
     Route::resource("products",'ProductController');
+    Route::resource("about",'AboutController');
+    Route::resource("chif",'ChifController');
+
+    Route::resource("blogs",'BlogController');
+    Route::get('/blogs-pending/{id}','BlogController@pending')->name('blog.pending');
+    Route::get('/blogs-confirm/{id}','BlogController@confirm')->name('blog.confirm');
+
     Route::resource("orders",'OrderController');
     Route::get("/users/{id}/status","UserController@status")->name('user.status');
+    Route::resource("/contacts","ContactController");
+    Route::resource("/contactUs","EmailController");
+    Route::resource("/setting","SettingsController");
     Route::get("/users/{id}/permissions","UserController@permissions")->name('permissions');
     Route::post("/users/{id}/permissions","UserController@postPermissions")->name('permissions-post');
     Route::resource("users",'UserController');
@@ -53,3 +62,20 @@ Route::prefix("admin")->namespace("Admin")->middleware(["auth","role:admin",'per
     Route::get('/order_status/{id}','OrderController@cancel')->name('order.cancel');
 
 });
+
+    //FrontEnd Sections Routs:
+    Route::prefix("frontend")->namespace("frontend")->group(function(){
+    Route::get("/home","HomeController@Home")->name('Home');
+    Route::get("/about","HomeController@About")->name('About');
+    Route::get("/menu","HomeController@Menu")->name('Menu');
+    Route::get("/blog","HomeController@Blogs")->name('Blogs');
+   // Route::get("/contact","HomeController@Contact")->name('Contact');
+//    Route::post("/booktable","HomeController@BookTable")->name('BookTable');
+   Route::post("/subscrip","HomeController@subscrip")->name('subscrip');
+//        Route::post('/contacStore',"HomeController@store_contact")->name('addcontact');
+});
+Route::resource('/contact','ContactController');
+Route::resource('/book','BookController');
+
+
+

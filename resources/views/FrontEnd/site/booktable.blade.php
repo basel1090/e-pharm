@@ -34,7 +34,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input  name="email" class="form-control" placeholder="Your Email">
+                                        <input  name="email" type="email" class="form-control" placeholder="Your Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -46,13 +46,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Date</label>
-                                        <input name="date" type="text" class="form-control" id="book_date" placeholder="Date">
+                                        <input class="form-control mb-3" id="datepicker77" type="date" name="check_in"  placeholder="Check in date">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Time</label>
-                                        <input name="time" type="text" class="form-control" id="book_time" placeholder="Time">
+                                        <input name="time" type="time" class="form-control" id="book_time" placeholder="Time">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

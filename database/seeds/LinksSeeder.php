@@ -40,6 +40,10 @@ class LinksSeeder extends Seeder
         $link = Link::create(['title'=>'Subscribe','icon'=>'fa fa-users','route'=>'#']);
         Link::create(['title'=>'Manage Subscribe','icon'=>'icon-list','route'=>'contactUs.index','parent_id'=>$link->id]);
 
+        //Setting Section
+        $link = Link::create(['title'=>'Setting','icon'=>'fa fa-users','route'=>'#']);
+        Link::create(['title'=>'Manage Setting','icon'=>'icon-list','route'=>'setting.index','parent_id'=>$link->id]);
+
         //Users
         $link = Link::create(['title'=>'Customers/Admin','icon'=>'fa fa-users','route'=>'#']);
         Link::create(['title'=>'Manage Customers/Admin','icon'=>'icon-list','route'=>'users.index','parent_id'=>$link->id]);

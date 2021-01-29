@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{app()->getLocale() === 'ar' ? 'rtl':'ltr'}}">
     <head>
         <meta charset="utf-8" />
         <title>Admin | @yield("title")</title>
@@ -31,7 +31,7 @@
 
 
         @yield("css")
-        
+
     </head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
         <!-- BEGIN HEADER -->

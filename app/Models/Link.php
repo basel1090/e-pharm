@@ -9,6 +9,7 @@ class Link extends Model
     //
     protected $fillable = [
         'title',
+
         'route',
         'parent_id',
         'show_in_menu',
@@ -16,7 +17,7 @@ class Link extends Model
         'icon'
     ];
 
-    
+
     public function subMenus(){
         return $this->hasMany("\App\Models\Link","parent_id","id");
     }
@@ -24,7 +25,7 @@ class Link extends Model
         return $this->belongsTo("\App\Models\Link","parent_id","id");
     }
 
-    
+
     public function users()
     {
         //return $this->belongsToMany('App\User','users_links','link_id','user_id');

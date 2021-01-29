@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
+use App\Http\Requests\Order\ChangePasswordRequest;
 use App\Http\Requests\Order\OrderRequest;
+use App\Http\Requests\Order\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Product;
+use App\Http\Controllers\Auth;
+
 
 class OrderController extends Controller
 {
@@ -45,5 +48,36 @@ class OrderController extends Controller
         return $orders;
     }
 
+    public function destroy($id){
+    $order = Order::find($id);
+    if($order && $order->order_status_id==1 && $order->user_id == request()->user()->$id){
+
+        Order::destroy($id);
+        return response()->json(["msg"=>"The Order Deleted Successfuly"]);
+        }
+      else{
+            return response()->json(["msg"=>"The Order Not Found"]);
+
+           }
+    }
+    public function postChangePassword(ChangePasswordRequest $request){
+        $hasher = app('hash');
+        if ($hasher->check($request->current_password, auth()->user()->password)) {
+            // Success
+            $order = Order::find(auth()->user()->id);
+            $order->update(['password'=>bcrypt($request->new_password)]);
+            session()->flash("msg", "s:Password updated Successfully");
+            return response()->json(["msg"=>"The Order Change Password Successfuly"]);
+        }
+        else{
+            session()->flash("msg", "e:Invalid Current Password");
+            return response()->json(["msg"=>"The Order Invalid"]);
+        }
+    }
+
+    public function signout() {
+        auth()->user()->token()->revoke();
+        return response()->json(["msg"=>"SigOut Successfuly"]);
+    }
 
 }

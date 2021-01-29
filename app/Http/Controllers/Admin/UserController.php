@@ -10,6 +10,7 @@ use App\User;
 use App\Models\Link;
 use App\Models\UserLink;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Notification\customerNotify;
 
 class UserController extends Controller
 {
@@ -22,6 +23,9 @@ class UserController extends Controller
         $user = User::find($id);
         if($user){
             $user->update(['is_active'=>!$user->is_active]);
+            if($user->is_active){
+                $user->notify(new customerNotify());
+            }
             session()->flash("msg", "s: Status updated Successfully");
             return redirect(route("users.index"));
         }

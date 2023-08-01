@@ -5,6 +5,7 @@ use App\User;
 use App\Models\Link;
 use Spatie\Permission\Models\Role;
 use App\Models\UserLink;
+
 class UsersSeeder extends Seeder
 {
     /**
@@ -14,22 +15,38 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        $adminRole = Role::create(['name'=>'admin']);
-        $customerRole = Role::create(['name'=>'customer']);
-        if(User::where('email','admin@epharm.com')->first()==null){
+        $adminRole = Role::create(['name' => 'admin']);
+        $customerRole = Role::create(['name' => 'customer']);
+        if (User::where('email', 'admin@epharm.com')->first() == null) {
 
-            $user = User::create(['email'=>'admin@epharm.com','password'=>bcrypt('123456'),'name'=>'Extra-Pharm Admin']);      
+            $user = User::create(['email' => 'admin@epharm.com', 'password' => bcrypt('123456'), 'name' => 'Extra-Pharm Admin']);
             $user->assignRole('admin');
 
             $links = Link::all();
-            
-            foreach($links as $link){
+
+            foreach ($links as $link) {
                 UserLink::create([
                     'user_id' => $user->id,
                     'link_id' => $link->id,
                 ]);
             }
+        }
 
+        for ($i = 1; $i <= 100; $i++) {
+            if (User::where('email', 'admin' . $i . '@epharm.com')->first() == null) {
+
+                $user = User::create(['email' => 'admin' . $i . '@epharm.com', 'password' => bcrypt('123456'), 'name' => 'admin' . $i . '@epharm.com']);
+                $user->assignRole('admin');
+
+                $links = Link::all();
+
+                foreach ($links as $link) {
+                    UserLink::create([
+                        'user_id' => $user->id,
+                        'link_id' => $link->id,
+                    ]);
+                }
+            }
         }
     }
 }
